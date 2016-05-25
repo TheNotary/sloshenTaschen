@@ -20,6 +20,7 @@
     "imagemagick-native": "file:node_modules/imagemagick-native",
     "jade": "^1.11.0",
     "multer": "^1.1.0",
+    "node-inspector": "^0.12.8",
     "nodemon": "^1.9.2",
     "p5": "^0.4.24",
     "ppm": "0.0.0",

@@ -34579,16 +34579,21 @@ new p5(function () {
   // console.log(this)
 
   this.setup = function setup () {
-    // var img = p5.loadImage('assets/test.jpg')
     this.createCanvas(700, 400)
     // this.frameRate(30)
     this.background(205)
+
     // this.set(0, 0, img)
     this.updatePixels()
   }
   // function draw(){
 
   // }
+  this.draw = function draw () {
+    var img = loadImage('/uploads/brocoli.jpeg')
+    this.image(img, 0, 0)
+    this.image(img, 0, 200, 200, 200)
+  }
 
   this.mouseDragged = function mouseDragged () {
     var rgb = colorPicker.getRGB()
