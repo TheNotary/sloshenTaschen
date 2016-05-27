@@ -1,9 +1,7 @@
 var p5 = require('p5')
 var colorPicker = require('./color_picker.js')
 
-new p5(function () {
-  // console.log(this)
-
+module.exports = new p5(function () {
   this.setup = function setup () {
     this.createCanvas(700, 400)
     this.background(205)
@@ -14,9 +12,10 @@ new p5(function () {
     this.updatePixels()
   }
   // function draw(){
-  exports.this.clearCanvas = function redraw () {
+  this.clearCanvas = function redraw () {
     this.background('black')
   }
+
   // }
   /*
   this.draw = function draw () {

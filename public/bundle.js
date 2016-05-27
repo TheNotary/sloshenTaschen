@@ -393,7 +393,7 @@ module.exports = function kindOf(val) {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":23,"is-buffer":5}],8:[function(require,module,exports){
+},{"buffer":24,"is-buffer":5}],8:[function(require,module,exports){
 /**
  * lodash 4.2.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modularize exports="npm" -o ./`
@@ -34575,9 +34575,7 @@ exports.right = function(str){
 var p5 = require('p5')
 var colorPicker = require('./color_picker.js')
 
-new p5(function () {
-  // console.log(this)
-
+module.exports = new p5(function () {
   this.setup = function setup () {
     this.createCanvas(700, 400)
     this.background(205)
@@ -34588,9 +34586,10 @@ new p5(function () {
     this.updatePixels()
   }
   // function draw(){
-  this.redraw = function redraw () {
+  this.clearCanvas = function redraw () {
     this.background('black')
   }
+
   // }
   /*
   this.draw = function draw () {
@@ -34629,6 +34628,13 @@ module.exports = colorPicker
 // watchify
 
 },{"simple-color-picker":15}],22:[function(require,module,exports){
+var canvas = require('./canvas.js')
+
+document.getElementById('clear').onclick = function () {
+  canvas.clearCanvas()
+}
+
+},{"./canvas.js":20}],23:[function(require,module,exports){
 'use strict'
 
 exports.toByteArray = toByteArray
@@ -34739,7 +34745,7 @@ function fromByteArray (uint8) {
   return parts.join('')
 }
 
-},{}],23:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 (function (global){
 /*!
  * The buffer module from node.js, for the browser.
@@ -36454,14 +36460,14 @@ function isnan (val) {
 }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"base64-js":22,"ieee754":25,"isarray":24}],24:[function(require,module,exports){
+},{"base64-js":23,"ieee754":26,"isarray":25}],25:[function(require,module,exports){
 var toString = {}.toString;
 
 module.exports = Array.isArray || function (arr) {
   return toString.call(arr) == '[object Array]';
 };
 
-},{}],25:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
   var e, m
   var eLen = nBytes * 8 - mLen - 1
@@ -36547,4 +36553,4 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
   buffer[offset + i - d] |= s * 128
 }
 
-},{}]},{},[20,21]);
+},{}]},{},[20,21,22]);
