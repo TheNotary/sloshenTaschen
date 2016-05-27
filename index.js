@@ -8,7 +8,7 @@ var storage = multer.diskStorage({
     cb(null, './uploads')
   },
   filename: function (req, file, cb) {
-    cb(null, 'hello')
+    cb(null, 'uploaded_image')
   }
 })
 
@@ -38,4 +38,3 @@ app.get('/', function (req, res) {
 
 var port = 3000
 app.listen(port, function () { console.log('listening on port ' + port) })
-// ///////////////

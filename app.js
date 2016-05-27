@@ -18,8 +18,8 @@ var srcData = fs.readFileSync(file)
 
 var content = imagemagick.convert({
   srcData: srcData,
-  width: 60,
-  height: 60,
+  width: 45,
+  height: 35,
   format: 'ppm'
 })
 

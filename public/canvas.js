@@ -6,20 +6,24 @@ new p5(function () {
 
   this.setup = function setup () {
     this.createCanvas(700, 400)
-    // this.frameRate(30)
     this.background(205)
 
-    // this.set(0, 0, img)
+    this.loadImage('/uploads/uploaded_image', function (img) {
+      image(img, 0, 0)
+    })
     this.updatePixels()
   }
   // function draw(){
-
+  exports.this.clearCanvas = function redraw () {
+    this.background('black')
+  }
   // }
+  /*
   this.draw = function draw () {
-    var img = loadImage('/uploads/brocoli.jpeg')
+
     this.image(img, 0, 0)
     this.image(img, 0, 200, 200, 200)
-  }
+  } */
 
   this.mouseDragged = function mouseDragged () {
     var rgb = colorPicker.getRGB()
