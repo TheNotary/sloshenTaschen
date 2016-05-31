@@ -7,6 +7,7 @@ html
 	body
 		block scripts 
 			script(type='text/javascript' src='../public/bundle.js')
+
 		form(method="post",enctype="multipart/form-data",action="/")
 			p
 				input(type="text",name="title",placeholder="title")
@@ -16,7 +17,7 @@ html
 				input(type="submit")
 		button(type='button', id='clear').
 				Click to clear
-
+		div(id='container')
 
 
 		

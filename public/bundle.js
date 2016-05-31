@@ -34575,43 +34575,37 @@ exports.right = function(str){
 var p5 = require('p5')
 var colorPicker = require('./color_picker.js')
 
-module.exports = new p5(function () {
-  this.setup = function setup () {
-    this.createCanvas(700, 400)
-    this.background(205)
+var myP5 = function (easel) {
+  easel.setup = function setup () {
+    easel.createCanvas(700, 400)
+    easel.background(205)
 
-    this.loadImage('/uploads/uploaded_image', function (img) {
-      image(img, 0, 0)
+    easel.loadImage('/uploads/uploaded_image', function (img) {
+      easel.image(img, 0, 0)
     })
-    this.updatePixels()
-  }
-  // function draw(){
-  this.clearCanvas = function redraw () {
-    this.background('black')
+
+    easel.updatePixels()
   }
 
-  // }
-  /*
-  this.draw = function draw () {
+  easel.coolThing = function redraw () {
+    easel.background('black')
+  }
 
-    this.image(img, 0, 0)
-    this.image(img, 0, 200, 200, 200)
-  } */
-
-  this.mouseDragged = function mouseDragged () {
+  easel.mouseDragged = function mouseDragged () {
     var rgb = colorPicker.getRGB()
-    this.stroke(rgb.r, rgb.g, rgb.b)
-    this.strokeWeight(10)
-    this.line(this.pmouseX, this.pmouseY, this.mouseX, this.mouseY)
+    easel.stroke(rgb.r, rgb.g, rgb.b)
+    easel.strokeWeight(10)
+    easel.line(this.pmouseX, this.pmouseY, this.mouseX, this.mouseY)
   }
 
 /* this.mouseClicked = function mouseClicked () { //this function will register but will not draw
-   // var rgb = colorPicker.getRGB()
-   this.stroke(255, 0, 0)
-   this.strokeWeight(10)
-   this.point(p5.mouseX, p5.mouseY)
+ // var rgb = colorPicker.getRGB()
+ this.stroke(255, 0, 0)
+ this.strokeWeight(10)
+ this.point(p5.mouseX, p5.mouseY)
  } */
-})
+}
+module.exports = new p5(myP5, 'container')
 
 },{"./color_picker.js":21,"p5":13}],21:[function(require,module,exports){
 var ColorPicker = require('simple-color-picker')
@@ -34628,10 +34622,18 @@ module.exports = colorPicker
 // watchify
 
 },{"simple-color-picker":15}],22:[function(require,module,exports){
-var canvas = require('./canvas.js')
+window.onload = function () {
+  var easel = require('./canvas.js')
+  var clearButton = document.getElementById('clear')
 
-document.getElementById('clear').onclick = function () {
-  canvas.clearCanvas()
+  clearButton.onclick = function () {
+    easel.coolThing()
+    // canvas.background('yellow')
+
+    document.body.style.backgroundColor = 'red'
+    console.log('two')
+  }
+  console.log('one')
 }
 
 },{"./canvas.js":20}],23:[function(require,module,exports){

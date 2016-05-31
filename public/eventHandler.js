@@ -1,5 +1,13 @@
-var canvas = require('./canvas.js')
+window.onload = function () {
+  var easel = require('./canvas.js')
+  var clearButton = document.getElementById('clear')
 
-document.getElementById('clear').onclick = function () {
-  canvas.clearCanvas()
+  clearButton.onclick = function () {
+    easel.coolThing()
+    // canvas.background('yellow')
+
+    document.body.style.backgroundColor = 'red'
+    console.log('two')
+  }
+  console.log('one')
 }
