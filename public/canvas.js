@@ -4,8 +4,7 @@ var colorPicker = require('./color_picker.js')
 var myP5 = function (easel) {
   easel.setup = function setup () {
     easel.createCanvas(700, 400)
-    easel.background(205)
-
+    easel.background('black')
     easel.loadImage('/uploads/uploaded_image', function (img) {
       easel.image(img, 0, 0)
     })
@@ -13,8 +12,12 @@ var myP5 = function (easel) {
     easel.updatePixels()
   }
 
-  easel.coolThing = function redraw () {
+  easel.clearCanvas = function redraw () {
     easel.background('black')
+  }
+
+  easel.sendCanvas = function () {
+    easel.saveCanvas('../assets/ftImage', 'jpg')
   }
 
   easel.mouseDragged = function mouseDragged () {

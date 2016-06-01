@@ -24,6 +24,7 @@
     "nodemon": "^1.9.2",
     "p5": "^0.4.24",
     "ppm": "0.0.0",
-    "simple-color-picker": "^0.1.0"
+    "simple-color-picker": "^0.1.0",
+    "watchify": "^3.7.0"
   }
 }
