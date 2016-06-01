@@ -34670,19 +34670,19 @@ module.exports = colorPicker
 },{"simple-color-picker":16}],23:[function(require,module,exports){
 window.onload = function () {
   var easel = require('./canvas.js')
-  var connect = require('./sendFT.js')
+  // var connect = require('./sendFT.js')
   var clearButton = document.getElementById('clear')
-  var sendButton = document.getElementById('send')
+  // var sendButton = document.getElementById('send')
 
   clearButton.onclick = function () {
     easel.clearCanvas()
   }
-  sendButton.onclick = function () {
-    connect.sendFT(easel.sendCanvas())
-  }
+// sendButton.onclick = function () {
+// connect.sendFT(easel.sendCanvas())
+// }
 }
 
-},{"./canvas.js":21,"./sendFT.js":24}],24:[function(require,module,exports){
+},{"./canvas.js":21}],24:[function(require,module,exports){
 (function (Buffer){
 module.exports = function sendFT (file) {
   var fs = require('fs')

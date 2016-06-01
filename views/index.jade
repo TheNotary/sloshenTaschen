@@ -8,18 +8,15 @@ html
 		block scripts 
 			script(type='text/javascript' src='../public/bundle.js')
 
-		form(method="post",enctype="multipart/form-data",action="/")
-			p
-				input(type="text",name="title",placeholder="title")
-			p
-				input(type="file",name="upload")
-			p
-				input(type="submit")
+		form(method='post',enctype="multipart/form-data",action='/')
+			input(type="file",name="upload")
+			input(type="submit")
 		button(type='button', id='clear').
 			Clear Canvas
-		button(type='button', id='send').
-			Send Image
+		form(method='post', enctype='multipart/form-data', action='/')
+			button(type='submit', name='sendImage', id='send').
+				Send Image
 		div(id='container')
 
 
-		
+	

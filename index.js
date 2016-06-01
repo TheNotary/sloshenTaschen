@@ -13,6 +13,7 @@ var storage = multer.diskStorage({
 })
 
 var uploading = multer({ storage: storage })
+var send = require('./public/sendFT.js')
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true })) // /try false
@@ -27,6 +28,11 @@ app.set('view engine', 'jade')
 // app.use(uploading.single('upload'))
 app.post('/', uploading.single('upload'), function (req, res) {
   res.end(res.render('index'))
+})
+
+app.post('/', uploading.single('sendImage'), function (req, res) {
+  send.sendFt(uploading.single('sendImage'))
+  res.end()
 })
 
 app.use('/public', express.static(path.join(__dirname, '/public')))
