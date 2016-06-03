@@ -34684,11 +34684,12 @@ window.onload = function () {
 
 },{"./canvas.js":21}],24:[function(require,module,exports){
 (function (Buffer){
-module.exports = function sendFT (file) {
-  var fs = require('fs')
+'use strict'
+
+function sendFT (file) {
+  var fs = require('fs') // these lines run everytime the function is envoked //defautl key word
   var dgram = require('dgram')
   var imagemagick = require('imagemagick-native')
-
   var port = 1337
   var host = 'ft.noise'
   // var file = process.argv[2]
@@ -34712,6 +34713,8 @@ module.exports = function sendFT (file) {
     client.close()
   })
 }
+
+exports.sendFT = sendFT
 
 }).call(this,require("buffer").Buffer)
 },{"buffer":28,"dgram":25,"fs":25,"imagemagick-native":4}],25:[function(require,module,exports){

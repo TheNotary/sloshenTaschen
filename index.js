@@ -3,6 +3,7 @@ var multer = require('multer')
 var bodyParser = require('body-parser')
 var path = require('path')
 var app = new express()
+var send = require('./public/sendFT.js') // this might also be the problem
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, './uploads')
@@ -12,8 +13,9 @@ var storage = multer.diskStorage({
   }
 })
 
+console.log(send.sendFT)
+
 var uploading = multer({ storage: storage })
-var send = require('./public/sendFT.js')
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true })) // /try false
@@ -31,7 +33,7 @@ app.post('/', uploading.single('upload'), function (req, res) {
 })
 
 app.post('/', uploading.single('sendImage'), function (req, res) {
-  send.sendFt(uploading.single('sendImage'))
+  send.sendFT('./brocoli.jpeg')
   res.end()
 })
 
