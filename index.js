@@ -34,6 +34,7 @@ app.post('/', uploading.single('upload'), function (req, res) {
 
 app.post('/', uploading.single('sendImage'), function (req, res) {
   send.sendFT('./brocoli.jpeg')
+  console.log(uploading.single('sendImage'))
   res.end()
 })
 

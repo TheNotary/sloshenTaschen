@@ -34617,6 +34617,7 @@ exports.right = function(str){
 },{}],21:[function(require,module,exports){
 var p5 = require('p5')
 var colorPicker = require('./color_picker.js')
+var fs = require('fs')
 
 var myP5 = function (easel) {
   easel.setup = function setup () {
@@ -34633,9 +34634,10 @@ var myP5 = function (easel) {
     easel.background('black')
   }
 
-  easel.sendCanvas = function () {
-    easel.saveCanvas('../assets/ftImage', 'jpg')
-  }
+  /*easel.sendCanvas = function () {
+    var can = easel.toDataURL()
+    fs.write('/assets', can)
+  }*/
 
   easel.mouseDragged = function mouseDragged () {
     var rgb = colorPicker.getRGB()
@@ -34653,7 +34655,7 @@ var myP5 = function (easel) {
 }
 module.exports = new p5(myP5, 'container')
 
-},{"./color_picker.js":22,"p5":14}],22:[function(require,module,exports){
+},{"./color_picker.js":22,"fs":25,"p5":14}],22:[function(require,module,exports){
 var ColorPicker = require('simple-color-picker')
 
 var colorPicker = new ColorPicker({
@@ -34670,19 +34672,23 @@ module.exports = colorPicker
 },{"simple-color-picker":16}],23:[function(require,module,exports){
 window.onload = function () {
   var easel = require('./canvas.js')
-  // var connect = require('./sendFT.js')
+  var connect = require('./sendFT.js')
   var clearButton = document.getElementById('clear')
-  // var sendButton = document.getElementById('send')
+  var sendButton = document.getElementById('send')
+  var fs = require('fs')
 
   clearButton.onclick = function () {
     easel.clearCanvas()
   }
-// sendButton.onclick = function () {
-// connect.sendFT(easel.sendCanvas())
-// }
+  sendButton.onclick = function () {
+    var can = document.getElementById('defaultCanvas0')
+    var img = can.toDataURL()
+
+    fs.writeFile('ftImage.jpg', img)
+  }
 }
 
-},{"./canvas.js":21}],24:[function(require,module,exports){
+},{"./canvas.js":21,"./sendFT.js":24,"fs":25}],24:[function(require,module,exports){
 (function (Buffer){
 'use strict'
 

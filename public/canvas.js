@@ -1,5 +1,6 @@
 var p5 = require('p5')
 var colorPicker = require('./color_picker.js')
+var fs = require('fs')
 
 var myP5 = function (easel) {
   easel.setup = function setup () {
@@ -16,9 +17,10 @@ var myP5 = function (easel) {
     easel.background('black')
   }
 
-  easel.sendCanvas = function () {
-    easel.saveCanvas('../assets/ftImage', 'jpg')
-  }
+  /*easel.sendCanvas = function () {
+    var can = easel.toDataURL()
+    fs.write('/assets', can)
+  }*/
 
   easel.mouseDragged = function mouseDragged () {
     var rgb = colorPicker.getRGB()
