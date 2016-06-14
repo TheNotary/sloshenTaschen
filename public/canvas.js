@@ -1,6 +1,5 @@
 var p5 = require('p5')
 var colorPicker = require('./color_picker.js')
-var fs = require('fs')
 
 var myP5 = function (easel) {
   easel.setup = function setup () {
