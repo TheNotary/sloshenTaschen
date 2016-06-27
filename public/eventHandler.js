@@ -12,9 +12,10 @@ window.onload = function () {
     var can = document.getElementById('defaultCanvas0')
     can.toBlob(function (blob) {
       var xhr = new XMLHttpRequest()
-      xhr.open('post', '/upload/binary/jpeg', true)
+      xhr.open('post', 'http://localhost:3000/upload/binary/jpeg', true)
       xhr.setRequestHeader('Content-type', 'image/jpeg')
       xhr.send(blob)
+
       console.log(blob)
     })
   }

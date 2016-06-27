@@ -5,15 +5,9 @@ var path = require('path')
 var fs = require('fs')
 var app = new express()
 var send = require('./sendFT.js') // this might also be the problem
-var storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, './uploads')
-  },
-  filename: function (req, file, cb) {
-    cb(null, 'uploaded_image')
-  }
-})
 
+var fileDest = ''
+var fileName = ''
 /*
 var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest
 var xhr = new XMLHttpRequest()
@@ -25,27 +19,33 @@ xhr.open('GET', '//upload/binary/jpeg', 'true')
   console.log(xhr.readyState)
 }*/
 
-var uploading = multer({ storage: storage })
+var storage = multer({ storage: multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, fileDest)
+    },
+    filename: function (req, file, cb) {
+      cb(null, fileName)
+    }
+}) })
+// was var uploading
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true })) // /try false
-// app.use(multer({ dest: './uploads' }))
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'jade')
 
-// app.use(bodyParser.urlencoded({ extended: false }))
-
-// app.use(uploading.single('upload'))
 app.post('/', uploading.single('upload'), function (req, res) {
   res.end(res.render('index'))
 })
 app.post('/upload/binary/jpeg', function (req, res) {
-  console.log('what is this')
-  res.sendFile(path.join(__dirname, '/public/shiiit.jpg'))
+  console.log('t')
+  // fs.writeFile('./public/picture.png', res.sendFile())
+  // res.sendFile(path.join(__dirname, '//public/shiiit.jpg'))
+  res.download(req)
   res.end()
-})
+}) // ////use middleware and process the posted image
 /*
 app.get('/', function (req, res) {
     
